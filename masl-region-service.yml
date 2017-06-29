@@ -14,7 +14,7 @@ spring:
    dbuser: masluser
    database: MahaweliDB
    password: g+H1ppDyrXldSwoLBo6c6Q==
-   host: 192.168.12.106
+   host: 192.168.12.138
    port: 27017
    maxConnectionsPerHost: 10000
    threadsAllowedToBlockForConnectionMultiplier: 5
