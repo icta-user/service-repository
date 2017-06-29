@@ -13,7 +13,7 @@ spring:
  data:
   mongodb:
    database: MahaweliDB
-   host: localhost
+   host: 192.168.12.138
    port: 27017
    maxConnectionsPerHost: 10000
    threadsAllowedToBlockForConnectionMultiplier: 5
