@@ -1,0 +1,117 @@
+info:
+  component: Edge Server
+  
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+  mapping:
+    DOWN: OK
+
+zuul:
+  routes:
+    masl-bungalows-service:
+          path: /maslbungalow/**
+          serviceId: masl-bungalows-service
+    masl-region-service:
+          path: /maslregion/**
+          serviceId: masl-region-service
+    masl-requestertype-service:
+          path: /maslrequestertype/**
+          serviceId: masl-requestertype-service
+    masl-tax-service:
+          path: /masltax/**
+          serviceId: masl-tax-service
+    masl-reservation-service:
+          path: /maslreservation/**
+          serviceId: masl-reservation-service
+    masl-receipts-service:
+          path: /maslreceipts/**
+          serviceId: masl-receipts-service
+    masl-rate-service:
+          path: /maslrate/**
+          serviceId: masl-rate-service
+    masl-permits-service:
+          path: /maslpermits/**
+          serviceId: masl-permits-service
+    masl-availability-service:
+          path: /maslavailability/**
+          serviceId: masl-availability-service
+    masl-payment-service:
+          path: /maslpayment/**
+          serviceId: masl-payment-service
+    masl-notification-service:
+          path: /maslnotification/**
+          serviceId: masl-notification-service
+    masl-user-service:
+          path: /masluser/**
+          serviceId: masl-user-service
+    masl-role-service:
+          path: /maslrole/**
+          serviceId: masl-role-service
+    masl-permission-service:
+          path: /maslpermission/**
+          serviceId: masl-permission-service 
+    masl-roomtype-service:
+          path: /maslroomtype/**
+          serviceId: masl-roomtype-service
+    masl-rooms-service:
+          path: /maslroom/**
+          serviceId: masl-rooms-service
+  ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin 
+
+  
+eureka:
+  instance:
+    preferIpAddress: true
+    #leaseRenewalIntervalInSeconds: 1
+    #leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.12.103:8761/eureka/,http://192.168.12.104:8761/eureka/
+    healthcheck:
+      enabled: false
+    #lease:
+      #duration: 5
+      
+ribbon:
+  eureka:
+    enabled: true
+  restclient:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: THREAD
+          thread:
+            timeoutInMilliseconds: 60000
+
+server:
+  port: 8765
+
+logging:
+  file: Edge.log
+  level:
+    ROOT: INFO
+    org.springframework.web: DEBUG
+    
+management:
+ security:
+  enabled: false
+  info:
+   git:
+    mode: full
+tokenUser: masluser
+tokenPassword: DghT@4%
+tokenLifeTime: 86400000
+tokenIssuer: MASL
+tokenSecret: MASLTokenSecret
+tokenSubject: MASLServerAccess
+tokenId: MASLTokenId
+    

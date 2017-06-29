@@ -1,0 +1,75 @@
+configuration:  
+  projectName: notification-service
+#Notification Service Port
+server:
+ port: 8099
+   
+logging:
+ file: Notification.log
+ level: INFO
+
+# MongoDB Properties 
+spring:
+ data:
+  mongodb:
+   dbuser: masluser
+   database: MahaweliDB
+   password: g+H1ppDyrXldSwoLBo6c6Q==
+   host: 192.168.12.106
+   port: 27017
+   maxConnectionsPerHost: 10000
+   threadsAllowedToBlockForConnectionMultiplier: 5
+   serverSelectionTimeout: 30000
+   maxWaitTime: 120000
+   connectTimeout: 10000
+   socketTimeout: 0
+   socketKeepAlive: false
+   sslEnabled: false
+   sslInvalidHostNameAllowed: false
+   alwaysUseMBeans: false 
+   heartbeatFrequency: 10000
+   minHeartbeatFrequency: 500
+   heartbeatConnectTimeout: 20000
+   heartbeatSocketTimeout: 20000
+   localThreshold: 15
+   cursorFinalizerEnabled: true
+   
+   
+eureka:
+  instance:
+    preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.12.103:8761/eureka/,http://192.168.12.104:8761/eureka/
+    healthcheck:
+      enabled: false
+    lease:
+      duration: 5
+
+email:
+  smtpserver: 192.168.2.6
+  smtpport: 465
+  emailaddress: forest@lankagate.gov.lk
+  emailpassword: qCF+Kbj2CWIc8I/QALG3nw==
+  permitpath: /opt/webapps/notification/permit.html
+  permitpath1: /opt/webapps/notification/permit1.html
+  receiptpath: /opt/webapps/notification/receipt.html
+  bannerpath: eservices.forestdept.gov.lk/email-banner.png
+  from: MASL
+  
+schedule:
+  time: "0 0 6 * * *"
+  
+sms:
+  uriSms: "http://govsms.icta.lk/"
+  epr: "http://lankagate.gov.lk:9080/services/GovSMSMTHandlerProxy.GovSMSMTHandlerProxyHttpSoap11Endpoint"
+  prefix: "govsms"
+  user: "user"
+  key: "key"
+  userTest: "icta"
+  keyTest: "g0v5ms123"
+  
+notificationService:
+      depCode: IctaTest

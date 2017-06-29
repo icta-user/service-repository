@@ -1,0 +1,71 @@
+configuration:  
+  projectName: payment-service
+#Payment Service Port
+server:
+ port: 8098
+   
+logging:
+ file: MaslPayment.log
+ level: INFO
+
+# MongoDB Properties 
+spring:
+ data:
+  mongodb:
+   dbuser: masluser
+   database: MahaweliDB
+   password: g+H1ppDyrXldSwoLBo6c6Q==
+   host: 192.168.12.106
+   port: 27017
+   maxConnectionsPerHost: 10000
+   threadsAllowedToBlockForConnectionMultiplier: 5
+   serverSelectionTimeout: 30000
+   maxWaitTime: 120000
+   connectTimeout: 10000
+   socketTimeout: 0
+   socketKeepAlive: false
+   sslEnabled: false
+   sslInvalidHostNameAllowed: false
+   alwaysUseMBeans: false 
+   heartbeatFrequency: 10000
+   minHeartbeatFrequency: 500
+   heartbeatConnectTimeout: 20000
+   heartbeatSocketTimeout: 20000
+   localThreshold: 15
+   cursorFinalizerEnabled: true
+   
+eureka:
+  instance:
+    preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.12.103:8761/eureka/,http://192.168.12.104:8761/eureka/
+    healthcheck:
+      enabled: false
+    lease:
+      duration: 5
+      
+#envirnment: test
+envirnment: production
+
+# Sampath Payment Gateway Operations
+sampath:
+  returnMethod: GET
+  FF_ENDPOINT: https://sampath.paycorp.com.au/rest/service/proxy
+  FF_AUTHTOKEN: 9e6a333c-66e5-4a26-8ade-7c63bf69b611
+  FF_HMAC_SECRET: 8Pq06a7TOYpRAQn3YsAmdYsOZeOw96Aj8bKV2Ecx40w=
+  FF_CLIENT_ID: rrP3Q7qeRB9b9xP72RepzA==
+
+# NTB Payment Gateway Operations
+ntb:
+  iPGServerURL: https://www.ipayamex.lk/ipg/servlet_pay
+  action: SaleTxn
+  currencyCode: LKR
+  merchantID: MAHAWELIAUTH
+  languageCode: en
+  keyPath: /opt/cert/ntbpg/keys/
+  logPath: /opt/cert/ntbpg/keys/logs/
+  #keyPath: C:\\merchant\\keys\\
+  #logPath: C:\\merchant\\keys\\logs\\

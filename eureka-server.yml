@@ -1,0 +1,33 @@
+configuration:  
+  projectName: eureka-server
+  
+server:
+ port: 8761
+
+# Defines the Eureka server that is used by the Netflix OSS components to use as the registry
+# for server discovery
+
+eureka:
+  instance:
+    hostname: 192.168.12.103
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://192.168.12.104:${server.port}/eureka/ 
+---
+
+eureka:
+  instance:
+    hostname: 192.168.12.104
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://192.168.12.103:${server.port}/eureka/ 
+      
+
+      
+logging:
+ file: Eureka.log
+ level: INFO
