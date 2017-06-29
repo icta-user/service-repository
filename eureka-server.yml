@@ -9,22 +9,22 @@ server:
 
 eureka:
   instance:
-    hostname: 192.168.12.103
+    hostname: 192.168.12.135
   client:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://192.168.12.104:${server.port}/eureka/ 
+      defaultZone: http://192.168.12.136:${server.port}/eureka/ 
 ---
 
 eureka:
   instance:
-    hostname: 192.168.12.104
+    hostname: 192.168.12.136
   client:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://192.168.12.103:${server.port}/eureka/ 
+      defaultZone: http://192.168.12.135:${server.port}/eureka/ 
       
 
       
