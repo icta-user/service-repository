@@ -41,7 +41,7 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://192.168.12.103:8761/eureka/,http://192.168.12.104:8762/eureka/
+      defaultZone: http://192.168.12.135:8761/eureka/,http://192.168.12.136:8761/eureka/
 producer:
   ribbon:
     ServerListRefreshInterval: 5000
